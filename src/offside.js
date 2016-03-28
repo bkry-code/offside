@@ -262,7 +262,7 @@
                     offsideOpenClass = 'is-open',                                           // Class appended to Offside instance when open
                     offsideBodyOpenClass = globalClass + '--' + 'is-open',                  // Class appended to body when an Offside instance is open (offside-js--is-open)
                     offsideBodyOpenSideClass = globalClass + '--is-' + slidingSide,         // Class appended to body when Offside instance is open (eg. offside-js--is-left / offside-js--is-open)
-                    id = offsideId || 0;                                                           // Offside instance id
+                    id = offsideId || 0;                                                    // Offside instance id
 
                 // Offside instance private methods
 
@@ -392,15 +392,12 @@
                     offsideSettings.afterDestroy();
                 },
 
-                // Fire console errors if DOM elements are missing
+                // Fire console errors when it looks like
+                // there is something wrong with initialization
                 _checkElements = function() {
 
                     if ( !offside ) {
                         console.error( 'Offside alert: "offside" selector could not match any element' );
-                    }
-
-                    if ( !offsideButtons.length ) {
-                        console.error( 'Offside alert: "buttonsSelector" selector could not match any element' );
                     }
                 };
 
