@@ -48,7 +48,6 @@
                             instantiatedOffsides[ offsideId ].close();
                         });
                     }
-
                 }
             },
 
@@ -129,7 +128,6 @@
             factorySettings = {
 
                 slidingElementsSelector: '.offside-sliding-element',    // String: Default sliding elements selectors ('#foo, #bar')
-                disableCss3dTransforms: false,                          // Disable CSS 3d Transforms support (for testing purposes)
             };
 
             // User defined factory settings
@@ -146,7 +144,7 @@
                 transitionsClass = globalClass + '--interact',      // Class appended to body when ready to turn on Offside CSS transitions (Added when first menu interaction happens)
                 instantiatedOffsides = [],                          // Array containing all instantiated offside elements
                 firstInteraction = true,                            // Keep track of first Offside interaction
-                has3d = factorySettings.disableCss3dTransforms ? false : _has3d(),       // Browser supports CSS 3d Transforms
+                has3d = _has3d(),                                   // Browser supports CSS 3d Transforms
                 openOffsidesId = [],                                // Tracks opened Offside instances id's
                 body = document.body,
                 slidingElements = getDomElements( factorySettings.slidingElementsSelector );     // Sliding elements
@@ -443,8 +441,6 @@
                         return instantiatedOffsides[ offsideId ] = offsideInstance;
                         /*jshint +W093 */
                     }
-
-
                 }
 
             };
