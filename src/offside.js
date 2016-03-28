@@ -130,7 +130,6 @@
 
                 slidingElementsSelector: '.offside-sliding-element',    // String: Default sliding elements selectors ('#foo, #bar')
                 disableCss3dTransforms: false,                          // Disable CSS 3d Transforms support (for testing purposes)
-                debug: false,                                           // Boolean: If true, print errors in console
             };
 
             // User defined factory settings
@@ -150,8 +149,7 @@
                 has3d = factorySettings.disableCss3dTransforms ? false : _has3d(),       // Browser supports CSS 3d Transforms
                 openOffsidesId = [],                                // Tracks opened Offside instances id's
                 body = document.body,
-                slidingElements = getDomElements( factorySettings.slidingElementsSelector ),     // Sliding elements
-                debug = factorySettings.debug;
+                slidingElements = getDomElements( factorySettings.slidingElementsSelector );     // Sliding elements
 
             // Offside singleton-factory Dom initialization
             // It's called just once on Offside singleton-factory init.
@@ -351,10 +349,6 @@
                 // Set up and initialize a new Offside instance
                 _initOffside = function() {
 
-                    if ( debug ) {
-                        _checkElements();
-                    }
-
                     // Append classes to Offside instance (.offside and .offside{slidingSide})
                     addClass( offside, offsideClass );
                     addClass( offside, offsideSideClass );
@@ -390,15 +384,6 @@
 
                     // afterDestroy callback
                     offsideSettings.afterDestroy();
-                },
-
-                // Fire console errors when it looks like
-                // there is something wrong with initialization
-                _checkElements = function() {
-
-                    if ( !offside ) {
-                        console.error( 'Offside alert: "offside" selector could not match any element' );
-                    }
                 };
 
                 // Offside instances public methods
